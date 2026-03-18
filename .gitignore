@@ -1,0 +1,36 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# --- Databricks & Notebooks ---
+.ipynb_checkpoints
+*.dbc
+*.pynb
+.DS_Store
+
+# --- IDE & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Logs & Data ---
+*.log
+logs/
+*.csv
+*.parquet
+*.delta
+*_checkpoint/
+
+# --- Secrets & Configs ---
+.env
+credentials.json
+config.secret.py
