@@ -25,7 +25,7 @@ This pipeline is orchestrated using **Databricks Workflows** with **17 tasks** e
 | **Success Rate** | 100% |
 
 ### Schedule Configuration
-```yaml
+
 Trigger: Manual (can be scheduled)
 Frequency: Daily at 2:00 AM UTC (configurable)
 Retry Policy: 2 retries with 5-minute intervals
