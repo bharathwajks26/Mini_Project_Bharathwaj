@@ -86,45 +86,45 @@ ingest_sequentially_s3(
 
 # COMMAND ----------
 
-import os
+# import os
 
-# --- GET CREDENTIALS FROM ENVIRONMENT VARIABLES ---
-access_key = os.environ.get("AK")
-secret_key = os.environ.get("SK")
+# # --- GET CREDENTIALS FROM ENVIRONMENT VARIABLES ---
+# access_key = os.environ.get("AK")
+# secret_key = os.environ.get("SK")
 
-# --- VALIDATE ---
-if not access_key or not secret_key:
-    raise Exception("⚠️ AWS credentials not found in cluster environment variables!")
+# # --- VALIDATE ---
+# if not access_key or not secret_key:
+#     raise Exception("⚠️ AWS credentials not found in cluster environment variables!")
 
-# --- CONFIGURATION ---
-bucket_name = "acen-employee-csv"
+# # --- CONFIGURATION ---
+# bucket_name = "acen-employee-csv"
 
-# --- CONFIGURE SPARK ---
-spark.conf.set("fs.s3a.access.key", access_key)
-spark.conf.set("fs.s3a.secret.key", secret_key)
-spark.conf.set("fs.s3a.endpoint", "s3.amazonaws.com")
+# # --- CONFIGURE SPARK ---
+# spark.conf.set("fs.s3a.access.key", access_key)
+# spark.conf.set("fs.s3a.secret.key", secret_key)
+# spark.conf.set("fs.s3a.endpoint", "s3.amazonaws.com")
 
-# --- FILE MOVE LOGIC ---
-archive_path = f"s3a://{bucket_name}/mini_project/Archive/"
-destination_path = f"s3a://{bucket_name}/csv_file/"
+# # --- FILE MOVE LOGIC ---
+# archive_path = f"s3a://{bucket_name}/mini_project/Archive/"
+# destination_path = f"s3a://{bucket_name}/csv_file/"
 
-print(f"Moving files FROM: {archive_path}")
-print(f"Moving files TO:   {destination_path}")
+# print(f"Moving files FROM: {archive_path}")
+# print(f"Moving files TO:   {destination_path}")
 
-try:
-    files = dbutils.fs.ls(archive_path)
-    if not files:
-        print("No files found in Archive to move.")
-    else:
-        count = 0
-        for file in files:
-            if file.size > 0:
-                source_file = file.path
-                dest_file = destination_path + file.name
-                dbutils.fs.mv(source_file, dest_file)
-                print(f"Moved: {file.name}")
-                count += 1
-        print(f"--------------------------------------------------")
-        print(f"RESET COMPLETE. Moved {count} files back to source.")
-except Exception as e:
-    print(f"Error accessing paths: {e}")
+# try:
+#     files = dbutils.fs.ls(archive_path)
+#     if not files:
+#         print("No files found in Archive to move.")
+#     else:
+#         count = 0
+#         for file in files:
+#             if file.size > 0:
+#                 source_file = file.path
+#                 dest_file = destination_path + file.name
+#                 dbutils.fs.mv(source_file, dest_file)
+#                 print(f"Moved: {file.name}")
+#                 count += 1
+#         print(f"--------------------------------------------------")
+#         print(f"RESET COMPLETE. Moved {count} files back to source.")
+# except Exception as e:
+#     print(f"Error accessing paths: {e}")
