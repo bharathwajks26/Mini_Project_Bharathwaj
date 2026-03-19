@@ -17,3 +17,33 @@ graph LR
     style C fill:#bbf,stroke:#333,stroke-width:2px
     style D fill:#bfb,stroke:#333,stroke-width:2px
     style E fill:#fbb,stroke:#333,stroke-width:2px
+
+## 🔄 Orchestration
+
+This pipeline is orchestrated using **Databricks Workflows** with **17 tasks** executing in parallel where possible.
+
+### Workflow Graph
+![Workflow Graph](./orchestration/workflow_graph.png)
+
+### Task Structure
+| Layer | Tasks | Execution Mode | Avg Runtime |
+|-------|-------|----------------|-------------|
+| **Ingestion** | 1 (Ingestion_Util) | Sequential | ~10s |
+| **RAWZ** | 5 (Employee, Dept, Project, Training, Payroll) | ✅ Parallel | ~1-2 min |
+| **WORK** | 5 notebooks | ✅ Parallel | ~30s |
+| **CONFZ** | 5 notebooks | ✅ Parallel | ~30s |
+| **PUBZ** | 1 (Result_Pubz) | Sequential (depends on all CONFZ) | ~15s |
+
+### Total Pipeline Runtime
+| Metric | Value |
+|--------|-------|
+| **First Run** | ~5 minutes |
+| **Subsequent Runs** | ~3 minutes |
+| **Success Rate** | 100% |
+
+### Schedule Configuration
+```yaml
+Trigger: Manual (can be scheduled)
+Frequency: Daily at 2:00 AM UTC (configurable)
+Retry Policy: 2 retries with 5-minute intervals
+Notifications: Email alerts on failure
