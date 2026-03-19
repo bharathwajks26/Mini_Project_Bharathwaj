@@ -1,0 +1,311 @@
+{
+  "name": "Mini_Project",
+  "email_notifications": {
+    "no_alert_for_skipped_runs": false
+  },
+  "webhook_notifications": {},
+  "timeout_seconds": 0,
+  "max_concurrent_runs": 1,
+  "tasks": [
+    {
+      "task_key": "Ingestion_From_S3",
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/DDL & Ingestion/Ingestion_Util",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Dept_Rawz",
+      "depends_on": [
+        {
+          "task_key": "Ingestion_From_S3"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Rawz/Dept_Rawz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Dept_Work",
+      "depends_on": [
+        {
+          "task_key": "Dept_Rawz"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Work/Dept_Work",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Dept_Confz",
+      "depends_on": [
+        {
+          "task_key": "Dept_Work"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Confz/Dept_Confz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Employee_Rawz",
+      "depends_on": [
+        {
+          "task_key": "Ingestion_From_S3"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Rawz/Employee_Rawz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Employee_Work",
+      "depends_on": [
+        {
+          "task_key": "Employee_Rawz"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Work/Employee_Work",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Employee_Confz",
+      "depends_on": [
+        {
+          "task_key": "Employee_Work"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Confz/Employee_Confz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Payroll_Rawz",
+      "depends_on": [
+        {
+          "task_key": "Ingestion_From_S3"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Rawz/Payroll_Rawz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Payroll_Work",
+      "depends_on": [
+        {
+          "task_key": "Payroll_Rawz"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Work/Payroll_Work",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Payroll_Confz",
+      "depends_on": [
+        {
+          "task_key": "Payroll_Work"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Confz/Payroll_Confz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Project_Rawz",
+      "depends_on": [
+        {
+          "task_key": "Ingestion_From_S3"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Rawz/Project_Rawz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Project_Work",
+      "depends_on": [
+        {
+          "task_key": "Project_Rawz"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Work/Project_Work",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Project_Confz",
+      "depends_on": [
+        {
+          "task_key": "Project_Work"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Confz/Project_Confz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Training_Rawz",
+      "depends_on": [
+        {
+          "task_key": "Ingestion_From_S3"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Rawz/Training_Rawz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Training_Work",
+      "depends_on": [
+        {
+          "task_key": "Training_Rawz"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Work/Training_Work",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Training_Confz",
+      "depends_on": [
+        {
+          "task_key": "Training_Work"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Confz/Training_Confz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Result_Pubz",
+      "depends_on": [
+        {
+          "task_key": "Payroll_Confz"
+        },
+        {
+          "task_key": "Dept_Confz"
+        },
+        {
+          "task_key": "Training_Confz"
+        },
+        {
+          "task_key": "Project_Confz"
+        },
+        {
+          "task_key": "Employee_Confz"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/bharathwaj.k.s@accenture.com/Mini_Project_Bharathwaj/Pubz/Result_Pubz",
+        "source": "WORKSPACE"
+      },
+      "existing_cluster_id": "1228-135653-1tdkdamq",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    }
+  ],
+  "queue": {
+    "enabled": true
+  },
+  "performance_target": "PERFORMANCE_OPTIMIZED"
+}
