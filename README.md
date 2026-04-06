@@ -6,7 +6,8 @@ A scalable medallion architecture ETL pipeline built on **Databricks** and **AWS
 This pipeline is orchestrated using **Databricks Workflows** with **17 tasks** executing in parallel where possible.
 
 ### Workflow Graph
-![Workflow Graph](./orchestration/workflow_graph.png)
+<img width="888" height="572" alt="Bharathwaj_DM" src="https://github.com/user-attachments/assets/20a7d41f-0805-4027-8abe-8c1fa5d8f43d" />
+
 
 ### Task Structure
 | Layer | Tasks | Execution Mode | Avg Runtime |
